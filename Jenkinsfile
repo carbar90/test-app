@@ -11,7 +11,11 @@ pipeline {
           }
 
       stage('Build') {
-      steps { sh 'ng build' }
-     }
+          steps { 
+              nodejs(nodeJSInstallationName: 'Node js') {
+              sh 'ng build'
+              }
+            }
+          }
   }
 }
