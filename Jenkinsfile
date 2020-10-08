@@ -4,7 +4,7 @@ pipeline {
   stages {
       stage('Build') {
       steps { 
-          nodejs(nodeJSInstallationName: 'Node 12.19.0') {
+          nodejs(nodeJSInstallationName: 'Node js') {
               sh 'ng build'
               }
      }
