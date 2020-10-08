@@ -2,11 +2,16 @@
 pipeline {
   agent any
   stages {
-      stage('Build') {
-      steps { 
-          nodejs(nodeJSInstallationName: 'Node js') {
-              sh 'ng build'
+      stage('Install') {
+          steps { 
+              nodejs(nodeJSInstallationName: 'Node js') {
+              sh 'npm install'
               }
+            }
+          }
+
+      stage('Build') {
+      steps { sh 'ng build' }
      }
     }
   }
