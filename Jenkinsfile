@@ -13,6 +13,5 @@ pipeline {
       stage('Build') {
       steps { sh 'ng build' }
      }
-    }
   }
 }
