@@ -3,10 +3,11 @@ pipeline {
   agent any
   stages {
       stage('Build') {
-      steps { nodejs() {
-          sh 'ng build'
-       }
-      }
+      steps { 
+          nodejs() {
+              sh 'ng build'
+              }
+     }
     }
   }
 }
