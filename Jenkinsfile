@@ -1,8 +1,10 @@
 
 pipeline {
   agent { label "build" }
-
-    stage('Build') {
+  stages {
+      
+      stage('Build') {
       steps { sh 'ng build' }
+      }
     }
 }
