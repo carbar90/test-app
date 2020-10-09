@@ -1,17 +1,16 @@
 
-pipeline {
-  agent any
-  stages {
+node{
+    def app
       stage('Install') {
-          steps { sh 'npm install'}
+          sh 'npm install'
           }
 
       stage('Build') {
-          steps { sh 'ng build'}
+          sh 'ng build'
           }
 
       stage('Deploy') {
-          steps {
+          
           sshagent(credentials : ['centos-local']) {
               sh "ssh 192.168.1.211 'sudo systemctl stop nginx' "
               sh "ssh 192.168.1.211 'sudo systemctl status nginx' "
@@ -19,7 +18,5 @@ pipeline {
               sh "ssh 192.168.1.211 'mv /dist  /usr/share/nginx/html/dist' "
               sh "ssh 192.168.1.211 'sudo systemctl start nginx' "
           }
-          }
       }
-  }
 }
