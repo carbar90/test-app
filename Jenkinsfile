@@ -12,7 +12,7 @@ pipeline {
 
       stage('Deploy') {
           steps {
-          sshagent(credentials : ['centos-local']) {
+          sshagent(credentials : ['2a55273e-1f56-433e-92cb-94e90a9f08b4']) {
               sh "ssh -o StrictHostKeyChecking=no root@192.168.1.211 'sudo systemctl stop nginx' "
 /*              sh "ssh root@192.168.1.211 'sudo systemctl status nginx' "
               sh "ssh root@192.168.1.211 'rm -rf  /usr/share/nginx/html/dist' "
