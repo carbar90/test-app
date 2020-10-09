@@ -1,16 +1,17 @@
 
-node{
-    def app
+pipeline {
+  agent any
+  stages {
       stage('Install') {
-          sh 'npm install'
+          steps { sh 'npm install'}
           }
 
       stage('Build') {
-          sh 'ng build'
+          steps { sh 'ng build'}
           }
 
       stage('Deploy') {
-          
+          steps {
           sshagent(credentials : ['centos-local']) {
               sh "ssh root@192.168.1.211 'sudo systemctl stop nginx' "
 /*              sh "ssh root@192.168.1.211 'sudo systemctl status nginx' "
@@ -19,4 +20,6 @@ node{
               sh "ssh root@192.168.1.211 'sudo systemctl start nginx' " */
           }
       }
+      }
+  }
 }
